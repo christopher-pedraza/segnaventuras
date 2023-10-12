@@ -31,7 +31,7 @@
 		9D82A2972AB7DEF70048411D /*  PreguntasPalabrasActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82A2962AB7DEF70048411D /*  PreguntasPalabrasActivity.swift */; };
 		9D82A2992AB7DF2B0048411D /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D82A2982AB7DF2B0048411D /* VideoView.swift */; };
 		9DE27CD12ABCD02600759E80 /* VideoActivityEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE27CD02ABCD02600759E80 /* VideoActivityEnd.swift */; };
-		BC45DAB52ACF4C840015A92D /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = BC45DAB42ACF4C840015A92D /* Poppins */; };
+		BC45DAB52ACF4C840015A92D /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC45DAB42ACF4C840015A92D /* Poppins-SemiBold.ttf */; };
 		BC79D81E2AD22DC500E100FB /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC79D81D2AD22DC500E100FB /* Poppins-Regular.ttf */; };
 		BC7C31FD2AC615A0007713C9 /* PalabrasVideosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C31FC2AC615A0007713C9 /* PalabrasVideosModel.swift */; };
 		BC7C31FF2AC615AF007713C9 /* PalabrasVideosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C31FE2AC615AF007713C9 /* PalabrasVideosViewModel.swift */; };
@@ -74,7 +74,7 @@
 		9D82A2982AB7DF2B0048411D /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		9DE27CD02ABCD02600759E80 /* VideoActivityEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoActivityEnd.swift; sourceTree = "<group>"; };
 		BC2456E32AD1CE3E00A32A2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BC45DAB42ACF4C840015A92D /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Poppins; path = ../../../../../../../../Users/alumno/Developer/Downloads/Poppins; sourceTree = "<group>"; };
+		BC45DAB42ACF4C840015A92D /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../../../../Downloads/segnaventuras-main 3/iOS App/Segnaventura/Segnaventura/Vocabulario/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		BC79D81D2AD22DC500E100FB /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		BC7C31FC2AC615A0007713C9 /* PalabrasVideosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabrasVideosModel.swift; sourceTree = "<group>"; };
 		BC7C31FE2AC615AF007713C9 /* PalabrasVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabrasVideosViewModel.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		BC8385772AC88A510061B696 /* Vocabulario */ = {
 			isa = PBXGroup;
 			children = (
-				BC45DAB42ACF4C840015A92D /* Poppins */,
+				BC45DAB42ACF4C840015A92D /* Poppins-SemiBold.ttf */,
 				BC79D81D2AD22DC500E100FB /* Poppins-Regular.ttf */,
 				FB74CE862AA7DF3B00C7124B /* VocabularioModel.swift */,
 				FB367B9D2AAFAB0E002236BA /* VocabularioDataDemo.swift */,
@@ -337,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B7CEE92AC331D4008F97F2 /* mydata.json in Resources */,
-				BC45DAB52ACF4C840015A92D /* Poppins in Resources */,
+				BC45DAB52ACF4C840015A92D /* Poppins-SemiBold.ttf in Resources */,
 				FB74CE7E2AA7D89700C7124B /* Preview Assets.xcassets in Resources */,
 				FB74CE7B2AA7D89700C7124B /* Assets.xcassets in Resources */,
 				BC79D81E2AD22DC500E100FB /* Poppins-Regular.ttf in Resources */,

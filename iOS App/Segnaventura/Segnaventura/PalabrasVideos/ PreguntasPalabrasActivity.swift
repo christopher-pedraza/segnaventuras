@@ -21,6 +21,9 @@ struct PreguntasPalabrasActivity: View {
     @State private var currentQuestionIndex: Int = 0
     @State private var quizFinished: Bool = false
     
+    @State private var correctAnswerVideo: Bool = false
+    @State private var bindingTapped: Bool = false
+    
     
     var body: some View {
             VStack {
@@ -65,8 +68,7 @@ struct PreguntasPalabrasActivity: View {
 
         for palabra in palabras {
             // Create a Respuesta instance for the correct answer
-            let correctAnswer = RespuestaPalabrasVideos(respuesta: palabra.palabra, esCorrecta: true)
-
+            let correctAnswer = RespuestaPalabrasVideos(respuesta_palabra:palabra.palabra,respuesta_video: palabra.id_video_segna, esCorrecta: true)
             // Create Respuesta instances for three incorrect answers
             var incorrectRespuestas = [RespuestaPalabrasVideos]()
 
@@ -76,7 +78,7 @@ struct PreguntasPalabrasActivity: View {
 
             for _ in 0..<3 {
                 if let incorrectPalabra = remainingPalabras.popLast() {
-                    incorrectRespuestas.append(RespuestaPalabrasVideos(respuesta: incorrectPalabra.palabra, esCorrecta: false))
+                    incorrectRespuestas.append(RespuestaPalabrasVideos(respuesta_palabra: incorrectPalabra.palabra,respuesta_video: incorrectPalabra.id_video_segna, esCorrecta: false))
                 }
             }
 

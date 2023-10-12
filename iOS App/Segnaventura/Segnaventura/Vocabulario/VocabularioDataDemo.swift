@@ -68,6 +68,7 @@ import AVFoundation
                    }
 
                    .frame(maxWidth: .infinity, alignment: .leading) // Make VStack take full width
+                   .background(customColorBackground)
                    .navigationTitle("Vocabulario")
                    .navigationBarTitleDisplayMode(.inline)
                    
@@ -98,14 +99,14 @@ import AVFoundation
            @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
            var imageWidth: CGFloat {
-               return horizontalSizeClass == .compact ? 90 : 160
+               return horizontalSizeClass == .compact ? 45 : 100
            }
            var imageHeight: CGFloat {
-               return horizontalSizeClass == .compact ? 75 : 140
+               return horizontalSizeClass == .compact ? 60 : 120
            }
 
            var objectFontSize: CGFloat {
-               return horizontalSizeClass == .compact ? 18 : 35
+               return horizontalSizeClass == .compact ? 20 : 35
            }
            
            let customColor = Color(red: 72 / 255, green: 200 / 255, blue: 254 / 255)
@@ -125,8 +126,9 @@ import AVFoundation
                         "Poppins-SemiBold",
                         size: horizontalSizeClass == .compact ? 25 : 40).bold())*/
                        //  .font(.title)
-                           .padding(5)
+                           .padding(.top,5)
                            .foregroundColor(.black)
+                           .frame(maxWidth: .infinity, alignment: .leading)
                        
                        //Limita objetos en una categoria a 6, checa si esta inclinado para definir numero de filas y  columnas
                        let maxObjectsPerRow = isLandscape ? 2 : 3
@@ -161,12 +163,12 @@ import AVFoundation
                                    }
                                    
                                    Text(vocabulario.palabra)
-                                       .font(Font.custom("Poppins-SemiBold", size: objectFontSize)) // Adjust font size here
+                                       .font(Font.custom("Poppins-Regular", size: objectFontSize)) // Adjust font size here
                                        .font(.headline)
                                    
                                        .foregroundColor(.black)
                                        .frame(width: 100)
-                                       .padding(.horizontal,30)
+                                       .padding(.horizontal,10)
                                        .padding(.vertical,10)
                                        
                                }
@@ -174,8 +176,8 @@ import AVFoundation
                                
                                .contentShape(Rectangle()) // Make the whole cell tappable
                                .cornerRadius(15)
-                               .padding(.horizontal,15)
-                               .padding(.vertical,15)
+                               .padding(.horizontal,50)
+                               .padding(.vertical,13)
                                .onTapGesture {
                                    selectedVocabulary = vocabulario // Set the selected vocabulary when the cell is tapped
                                }
@@ -190,22 +192,24 @@ import AVFoundation
                                    .font(.system(size: horizontalSizeClass == .compact ? 18 : 30))
                            }
                            .padding(.top, 5)
-                           .padding(.bottom, 5)
-                           .padding(.horizontal, 5)
+                           .padding(.bottom, 3)
+                           .padding(.horizontal, 7)
                            .background(
                                RoundedRectangle(cornerRadius: 4) // Apply round corners to the button
                                    .stroke(customColorVerMas, lineWidth: 1) // Set a blue outline with a line width of 2
+                                .padding(.bottom,7)
                            )
                        }
                    }
+                   .padding(.horizontal,10)
                    .background(Color.white)
-                   .cornerRadius(20)
+                   .cornerRadius(10)
                    
                    .sheet(item: $selectedVocabulary) { vocabulary in
                        PopupView(vocabulary: vocabulary, videoID: vocabulary.id_video_segna)
                    }
                }                            //.padding(.horizontal,35)
-                  // .padding(.vertical,35)
+                  .padding(.horizontal,10)
 
            
            

@@ -14,7 +14,7 @@ struct IndividualQuizActivity: View {
     //let videoID: String
     let preguntasArr: PreguntasPalabrasVideosArr
     @Binding var correctAnswers: Int
-    @Binding var questionCorrectAnswers: [Int]  
+    @Binding var questionCorrectAnswers: [Int]
     @Binding var currentQuestionIndex: Int // Binding for tracking the current question
     @State var correctAnswerVideo: Bool = false
     @State var bindingTapped: Bool = false
@@ -236,4 +236,3 @@ struct QuizButton: View {
         //.disabled(questionCorrectAnswers[questionIndex] == cantidadCorrectas) // Use questionIndex
     }
 }
-
