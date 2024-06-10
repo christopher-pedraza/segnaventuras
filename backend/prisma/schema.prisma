@@ -1,12 +1,17 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// Se puede visualizar el esquema en:
+// 1. https://azimutt.app/new?prisma 
+// 2. https://prismaliser.app
+
 // Correr desde CMD, no la termina de VSCode. La terminal de VSCode produce un archivo con otro encoding que provoca un error en el
 // segundo comando. Esto se resuelve corriendolo desde CMD
 // npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma --script > prisma/migrations/0_init/migration.sql
 // npx prisma migrate resolve --applied 0_init
 
 // Cada vez que se modifica el esquema correr "npx prisma generate"
+// npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma --script > prisma/migrations/0_init/migration.sql
 // npx prisma migrate reset
 
 generator client {
@@ -29,65 +34,68 @@ model miembro {
 }
 
 model isla {
-  id_isla            Int                  @id @default(autoincrement())
-  nombre             String
-  modelo_general     Bytes?
-  modelo_especifico  Bytes?
-  video_cuestionario video_cuestionario[]
-  quiz               quiz[]
-  modelo_coml        modelo_coml[]
-  treasure_hunt      treasure_hunt[]
-  nivel              nivel[]
-  palabra            palabra[]
-  progreso_islas     progreso_islas[]
+  id_isla           Int              @id @default(autoincrement())
+  nombre            String
+  modelo_general    Bytes?
+  modelo_especifico Bytes?
+  // video_cuestionario video_cuestionario[]
+  // quiz               quiz[]
+  // modelo_coml        modelo_coml[]
+  // treasure_hunt      treasure_hunt[]
+  nivel             nivel[]
+  // palabra            palabra[]
+  progreso_islas    progreso_islas[]
 }
 
-model video_cuestionario {
-  id_video_cuestionario       Int                           @id @default(autoincrement())
-  nombre                      String
-  id_isla                     Int
-  isla                        isla                          @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
-  nivel                       nivel[]
-  parte_video_cuestionario    parte_video_cuestionario[]
-  palabras_video_cuestionario palabras_video_cuestionario[]
-}
+// model video_cuestionario {
+//   id_video_cuestionario    Int                        @id @default(autoincrement())
+//   nombre                   String
+//   // id_isla                  Int
+//   // isla                     isla                       @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
+//   nivel                    nivel[]
+//   parte_video_cuestionario parte_video_cuestionario[]
+//   // palabras_video_cuestionario palabras_video_cuestionario[]
+// }
 
-model quiz {
-  id_quiz       Int             @id @default(autoincrement())
-  id_isla       Int
-  nombre        String
-  isla          isla            @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
-  nivel         nivel[]
-  detalles_quiz detalles_quiz[]
-}
+// model quiz {
+//   id_quiz       Int             @id @default(autoincrement())
+//   id_isla       Int
+//   nombre        String
+//   isla          isla            @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
+//   nivel         nivel[]
+//   detalles_quiz detalles_quiz[]
+// }
 
-model modelo_coml {
-  id_modelo_coml Int             @id @default(autoincrement())
-  id_isla        Int
-  isla           isla            @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
-  treasure_hunt  treasure_hunt[]
-}
+// model modelo_coml {
+//   id_modelo_coml Int             @id @default(autoincrement())
+//   id_isla        Int
+//   isla           isla            @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
+//   treasure_hunt  treasure_hunt[]
+// }
 
-model treasure_hunt {
-  id_treasure_hunt Int         @id @default(autoincrement())
-  id_isla          Int
-  id_modelo_coml   Int
-  isla             isla        @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
-  modelo_coml      modelo_coml @relation(fields: [id_modelo_coml], references: [id_modelo_coml], onDelete: NoAction, onUpdate: NoAction)
-  nivel            nivel[]
-}
+// model treasure_hunt {
+//   id_treasure_hunt Int         @id @default(autoincrement())
+//   id_isla          Int
+//   id_modelo_coml   Int
+//   isla             isla        @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
+//   modelo_coml      modelo_coml @relation(fields: [id_modelo_coml], references: [id_modelo_coml], onDelete: NoAction, onUpdate: NoAction)
+//   nivel            nivel[]
+// }
 
 model nivel {
-  id_nivel              Int                 @id @default(autoincrement())
-  id_isla               Int?
-  id_video_cuestionario Int?
-  id_quiz               Int?
-  id_treasure_hunt      Int?
-  isla                  isla?               @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
-  video_cuestionario    video_cuestionario? @relation(fields: [id_video_cuestionario], references: [id_video_cuestionario], onDelete: NoAction, onUpdate: NoAction)
-  quiz                  quiz?               @relation(fields: [id_quiz], references: [id_quiz], onDelete: NoAction, onUpdate: NoAction)
-  treasure_hunt         treasure_hunt?      @relation(fields: [id_treasure_hunt], references: [id_treasure_hunt], onDelete: NoAction, onUpdate: NoAction)
-  progreso_nivel        progreso_nivel[]
+  id_nivel                 Int                        @id @default(autoincrement())
+  id_isla                  Int?
+  nombre                   String
+  // id_video_cuestionario Int?
+  // id_quiz               Int?
+  // id_treasure_hunt      Int?
+  isla                     isla?                      @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
+  // video_cuestionario    video_cuestionario? @relation(fields: [id_video_cuestionario], references: [id_video_cuestionario], onDelete: NoAction, onUpdate: NoAction)
+  // quiz                  quiz?               @relation(fields: [id_quiz], references: [id_quiz], onDelete: NoAction, onUpdate: NoAction)
+  // treasure_hunt         treasure_hunt?      @relation(fields: [id_treasure_hunt], references: [id_treasure_hunt], onDelete: NoAction, onUpdate: NoAction)
+  progreso_nivel           progreso_nivel[]
+  palabra                  palabra[]
+  parte_video_cuestionario parte_video_cuestionario[]
 }
 
 model progreso_islas {
@@ -102,7 +110,7 @@ model progreso_islas {
 model progreso_nivel {
   id_miembro                     Int
   id_nivel                       Int
-  completada_treasure_hunt       Boolean?
+  // completada_treasure_hunt       Boolean?
   completada_videos_cuestionario Boolean?
   completada_quiz                Boolean?
   miembro                        miembro  @relation(fields: [id_miembro], references: [id_miembro], onDelete: NoAction, onUpdate: NoAction)
@@ -112,40 +120,43 @@ model progreso_nivel {
 }
 
 model palabra {
-  id_palabra                  Int                           @id @default(autoincrement())
-  id_isla                     Int
-  palabra                     String
-  id_video_segna              String
-  url_icono                   String
-  escaneable                  Boolean
-  isla                        isla                          @relation(fields: [id_isla], references: [id_isla], onDelete: NoAction, onUpdate: NoAction)
-  detalles_quiz               detalles_quiz[]
-  palabras_video_cuestionario palabras_video_cuestionario[]
+  id_palabra     Int    @id @default(autoincrement())
+  id_nivel       Int
+  palabra        String
+  id_video_segna String
+  url_icono      String
+  // escaneable                  Boolean
+  nivel          nivel  @relation(fields: [id_nivel], references: [id_nivel], onDelete: NoAction, onUpdate: NoAction)
+  // detalles_quiz               detalles_quiz[]
+  // palabras_video_cuestionario palabras_video_cuestionario[]
 }
 
 model parte_video_cuestionario {
   id_parte_video_cuestionario  Int                            @id @default(autoincrement())
-  id_video_cuestionario        Int
+  id_nivel                     Int
+  // id_video_cuestionario        Int
   url_video                    String
   indice                       Int
   nombre                       String
-  video_cuestionario           video_cuestionario             @relation(fields: [id_video_cuestionario], references: [id_video_cuestionario], onDelete: Cascade, onUpdate: NoAction)
+  nivel                        nivel                          @relation(fields: [id_nivel], references: [id_nivel], onDelete: Cascade, onUpdate: NoAction)
+  // video_cuestionario           video_cuestionario             @relation(fields: [id_video_cuestionario], references: [id_video_cuestionario], onDelete: Cascade, onUpdate: NoAction)
   preguntas_video_cuestionario preguntas_video_cuestionario[]
 }
 
-model palabras_video_cuestionario {
-  id_video_cuestionario Int
-  id_palabra            Int
-  video_cuestionario    video_cuestionario @relation(fields: [id_video_cuestionario], references: [id_video_cuestionario], onDelete: Cascade, onUpdate: NoAction)
-  palabra               palabra            @relation(fields: [id_palabra], references: [id_palabra], onDelete: Cascade, onUpdate: NoAction)
+// model palabras_video_cuestionario {
+//   id_video_cuestionario Int
+//   id_palabra            Int
+//   video_cuestionario    video_cuestionario @relation(fields: [id_video_cuestionario], references: [id_video_cuestionario], onDelete: Cascade, onUpdate: NoAction)
+//   palabra               palabra            @relation(fields: [id_palabra], references: [id_palabra], onDelete: Cascade, onUpdate: NoAction)
 
-  @@id([id_video_cuestionario, id_palabra])
-}
+//   @@id([id_video_cuestionario, id_palabra])
+// }
 
 model preguntas_video_cuestionario {
   id_preguntas_video_cuestionario Int                             @id @default(autoincrement())
   id_parte_video_cuestionario     Int
   pregunta                        String
+  indice                          Int
   parte_video_cuestionario        parte_video_cuestionario        @relation(fields: [id_parte_video_cuestionario], references: [id_parte_video_cuestionario], onDelete: Cascade, onUpdate: NoAction)
   respuestas_video_cuestionario   respuestas_video_cuestionario[]
 }
@@ -158,11 +169,11 @@ model respuestas_video_cuestionario {
   preguntas_video_cuestionario     preguntas_video_cuestionario @relation(fields: [id_preguntas_video_cuestionario], references: [id_preguntas_video_cuestionario], onDelete: Cascade, onUpdate: NoAction)
 }
 
-model detalles_quiz {
-  id_quiz    Int
-  id_palabra Int
-  quiz       quiz    @relation(fields: [id_quiz], references: [id_quiz], onDelete: Cascade, onUpdate: NoAction)
-  palabra    palabra @relation(fields: [id_palabra], references: [id_palabra], onDelete: Cascade, onUpdate: NoAction)
+// model detalles_quiz {
+//   id_quiz    Int
+//   id_palabra Int
+//   quiz       quiz    @relation(fields: [id_quiz], references: [id_quiz], onDelete: Cascade, onUpdate: NoAction)
+//   palabra    palabra @relation(fields: [id_palabra], references: [id_palabra], onDelete: Cascade, onUpdate: NoAction)
 
-  @@id([id_quiz, id_palabra])
-}
+//   @@id([id_quiz, id_palabra])
+// }

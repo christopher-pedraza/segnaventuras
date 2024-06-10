@@ -1,0 +1,2313 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Señaventura",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
+  ],
+  "paths": {
+    "/niveles/": {
+      "get": {
+        "tags": [
+          "Nivel"
+        ],
+        "description": "Endpoint para obtener todos los niveles.",
+        "responses": {
+          "200": {
+            "description": "Niveles obtenidos correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_nivel": {
+                        "type": "integer"
+                      },
+                      "id_isla": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener los niveles.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Nivel"
+        ],
+        "description": "Endpoint para crear un nuevo nivel.",
+        "responses": {
+          "200": {
+            "description": "Nivel creado correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al crear el nivel.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_isla": {
+                    "type": "integer"
+                  },
+                  "nombre": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id_isla"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/niveles/getByIsla/{id}": {
+      "get": {
+        "tags": [
+          "Nivel"
+        ],
+        "description": "Endpoint para obtener los niveles por id de isla.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la isla."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Niveles obtenidos correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_nivel": {
+                        "type": "integer"
+                      },
+                      "id_isla": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener los niveles.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/niveles/{id_nivel}": {
+      "put": {
+        "tags": [
+          "Nivel"
+        ],
+        "description": "Endpoint para actualizar un nivel.",
+        "parameters": [
+          {
+            "name": "id_nivel",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID del nivel a actualizar."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nivel actualizado correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al actualizar el nivel.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_isla": {
+                    "type": "integer"
+                  },
+                  "nombre": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id_isla",
+                  "nombre"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Nivel"
+        ],
+        "description": "Endpoint para eliminar un nivel.",
+        "parameters": [
+          {
+            "name": "id_nivel",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID del nivel a eliminar."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nivel eliminado correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al eliminar el nivel.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parteVideo/": {
+      "get": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para obtener todas las partes de video cuestionario.",
+        "responses": {
+          "200": {
+            "description": "Partes de video cuestionario obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_parte_video_cuestionario": {
+                        "type": "integer"
+                      },
+                      "id_nivel": {
+                        "type": "integer"
+                      },
+                      "url_video": {
+                        "type": "string"
+                      },
+                      "indice": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las partes de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para crear una nueva parte de video cuestionario.",
+        "responses": {
+          "200": {
+            "description": "Parte de video cuestionario creada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "url_video": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al crear la parte de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_nivel": {
+                    "type": "integer"
+                  },
+                  "url_video": {
+                    "type": "string"
+                  },
+                  "nombre": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id_nivel",
+                  "url_video",
+                  "nombre"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parteVideo/byNivel/{id}": {
+      "get": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para obtener todas las partes de video cuestionario por nivel.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID del nivel."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Partes de video cuestionario obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_parte_video_cuestionario": {
+                        "type": "integer"
+                      },
+                      "id_nivel": {
+                        "type": "integer"
+                      },
+                      "url_video": {
+                        "type": "string"
+                      },
+                      "indice": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las partes de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parteVideo/{id}": {
+      "get": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para obtener una parte de video cuestionario por su ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la parte de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parte de video cuestionario obtenida correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "url_video": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener la parte de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para eliminar una parte de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la parte de video cuestionario a eliminar."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parte de video cuestionario eliminada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "url_video": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al eliminar la parte de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {}
+        }
+      },
+      "put": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para editar una parte de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la parte de video cuestionario a editar."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Parte de video cuestionario editada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_nivel": {
+                      "type": "integer"
+                    },
+                    "url_video": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al editar la parte de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url_video": {
+                    "type": "string"
+                  },
+                  "nombre": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/parteVideo/cambiarIndice/{id}": {
+      "put": {
+        "tags": [
+          "Parte Video"
+        ],
+        "description": "Endpoint para cambiar el índice de una parte de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la parte de video cuestionario cuyo índice se cambiará."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Índices actualizados correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Parte de video cuestionario o parte de intercambio no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al cambiar el índice de la parte de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "direccion": {
+                    "type": "string"
+                  },
+                  "id_nivel": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "direccion",
+                  "id_nivel"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/isla/": {
+      "get": {
+        "tags": [
+          "Isla"
+        ],
+        "description": "Endpoint para obtener todas las islas.",
+        "responses": {
+          "200": {
+            "description": "Islas obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_isla": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      },
+                      "modelo_general": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "modelo_especifico": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las islas.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Isla"
+        ],
+        "description": "Endpoint para crear una isla.",
+        "responses": {
+          "201": {
+            "description": "Isla creada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    },
+                    "modelo_general": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "modelo_especifico": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al crear la isla.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "nombre"
+                  },
+                  "modelo_general": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "modelo_especifico": {
+                    "type": "string",
+                    "example": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/isla/withNiveles": {
+      "get": {
+        "tags": [
+          "Isla"
+        ],
+        "description": "Endpoint para obtener todas las islas con sus niveles.",
+        "responses": {
+          "200": {
+            "description": "Islas obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_isla": {
+                        "type": "integer"
+                      },
+                      "nombre": {
+                        "type": "string"
+                      },
+                      "nivel": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id_nivel": {
+                              "type": "integer"
+                            },
+                            "nombre": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las islas.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/isla/{id}": {
+      "get": {
+        "tags": [
+          "Isla"
+        ],
+        "description": "Endpoint para obtener una isla por id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la isla."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Isla obtenida correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    },
+                    "modelo_general": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "modelo_especifico": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Isla no encontrada."
+          },
+          "500": {
+            "description": "Error al obtener la isla.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Isla"
+        ],
+        "description": "Endpoint para actualizar una isla.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la isla."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Isla actualizada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    },
+                    "modelo_general": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "modelo_especifico": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Isla no encontrada."
+          },
+          "500": {
+            "description": "Error al actualizar la isla.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string",
+                    "example": "nombre"
+                  },
+                  "modelo_general": {
+                    "type": "string",
+                    "example": null
+                  },
+                  "modelo_especifico": {
+                    "type": "string",
+                    "example": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Isla"
+        ],
+        "description": "Endpoint para eliminar una isla.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la isla."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Isla eliminada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_isla": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    },
+                    "modelo_general": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "modelo_especifico": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Isla no encontrada."
+          },
+          "500": {
+            "description": "Error al eliminar la isla.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/miembro/login": {
+      "post": {
+        "tags": [
+          "Miembro"
+        ],
+        "description": "Endpoint para iniciar sesión como administrador.",
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "autenticado": {
+                      "type": "boolean"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Inicio de sesión fallido.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "autenticado": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al iniciar sesión.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "autenticado": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "usuario": {
+                    "type": "string"
+                  },
+                  "contrasegna": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/miembro/registro": {
+      "post": {
+        "tags": [
+          "Miembro"
+        ],
+        "description": "Endpoint para registrar un nuevo miembro.",
+        "responses": {
+          "200": {
+            "description": "Registro exitoso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_miembro": {
+                      "type": "integer"
+                    },
+                    "usuario": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Registro fallido. Usuario ya existe.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al registrar.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "usuario": {
+                    "type": "string"
+                  },
+                  "contrasegna": {
+                    "type": "string"
+                  },
+                  "es_administrador": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/miembro/authToken": {
+      "post": {
+        "tags": [
+          "Miembro"
+        ],
+        "description": "Endpoint para autenticar un token.",
+        "responses": {
+          "200": {
+            "description": "Token autenticado correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "autenticado": {
+                      "type": "boolean"
+                    },
+                    "usuario": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Token no autenticado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "autenticado": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "usuario": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al autenticar el token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/": {
+      "get": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para obtener todas las preguntas de video cuestionario.",
+        "responses": {
+          "200": {
+            "description": "Preguntas de video cuestionario obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_preguntas_video_cuestionario": {
+                        "type": "integer"
+                      },
+                      "id_parte_video_cuestionario": {
+                        "type": "integer"
+                      },
+                      "pregunta": {
+                        "type": "string"
+                      },
+                      "indice": {
+                        "type": "integer"
+                      },
+                      "respuestas_video_cuestionario": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id_respuestas_video_cuestionario": {
+                              "type": "integer"
+                            },
+                            "id_preguntas_video_cuestionario": {
+                              "type": "integer"
+                            },
+                            "respuesta": {
+                              "type": "string"
+                            },
+                            "es_correcta": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las preguntas de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para crear una nueva pregunta de video cuestionario.",
+        "responses": {
+          "200": {
+            "description": "Pregunta de video cuestionario creada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "pregunta": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al crear la pregunta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_parte": {
+                    "type": "integer",
+                    "description": "Id de la parte de video cuestionario."
+                  },
+                  "pregunta": {
+                    "type": "string",
+                    "description": "Texto de la pregunta."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/byParte/{id_parte}": {
+      "get": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para obtener todas las preguntas de video cuestionario de una parte.",
+        "parameters": [
+          {
+            "name": "id_parte",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la parte de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Preguntas de video cuestionario obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_preguntas_video_cuestionario": {
+                        "type": "integer"
+                      },
+                      "pregunta": {
+                        "type": "string"
+                      },
+                      "indice": {
+                        "type": "integer"
+                      },
+                      "respuestas_video_cuestionario": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id_respuestas_video_cuestionario": {
+                              "type": "integer"
+                            },
+                            "respuesta": {
+                              "type": "string"
+                            },
+                            "es_correcta": {
+                              "type": "boolean"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las preguntas de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/{id}": {
+      "get": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para obtener una pregunta de video cuestionario por id.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la pregunta de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pregunta de video cuestionario obtenida correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "pregunta": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    },
+                    "respuestas_video_cuestionario": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id_respuestas_video_cuestionario": {
+                            "type": "integer"
+                          },
+                          "respuesta": {
+                            "type": "string"
+                          },
+                          "es_correcta": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pregunta de video cuestionario no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para modificar una pregunta de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la pregunta de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pregunta de video cuestionario modificada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "pregunta": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pregunta de video cuestionario no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al modificar la pregunta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pregunta": {
+                    "type": "string",
+                    "description": "Texto de la pregunta."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/respuestas/{id}": {
+      "get": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para obtener las respuestas de una pregunta\r  de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la pregunta de video   cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuestas de video cuestionario obtenidas correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id_respuestas_video_cuestionario": {
+                        "type": "integer"
+                      },
+                      "respuesta": {
+                        "type": "string"
+                      },
+                      "es_correcta": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al obtener las respuestas de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/respuesta": {
+      "post": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para agregar una respuesta a una pregunta de video cuestionario.",
+        "responses": {
+          "200": {
+            "description": "Respuesta de video cuestionario agregada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_respuestas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "respuesta": {
+                      "type": "string"
+                    },
+                    "es_correcta": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al agregar la respuesta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_pregunta": {
+                    "type": "integer",
+                    "description": "Id de la pregunta de video cuestionario."
+                  },
+                  "respuesta": {
+                    "type": "string",
+                    "description": "Texto de la respuesta."
+                  },
+                  "es_correcta": {
+                    "type": "boolean",
+                    "description": "Indica si la respuesta es correcta."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/respuesta/{id}": {
+      "put": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para modificar una respuesta de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la respuesta de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta de video cuestionario modificada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_respuestas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "respuesta": {
+                      "type": "string"
+                    },
+                    "es_correcta": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Respuesta de video cuestionario no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al modificar la respuesta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "respuesta": {
+                    "type": "string",
+                    "description": "Texto de la respuesta."
+                  },
+                  "es_correcta": {
+                    "type": "boolean",
+                    "description": "Indica si la respuesta es correcta."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para eliminar una respuesta de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la respuesta de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Respuesta de video cuestionario eliminada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_respuestas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "respuesta": {
+                      "type": "string"
+                    },
+                    "es_correcta": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Respuesta de video cuestionario no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al eliminar la respuesta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/cambiarIndice/{id}": {
+      "put": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para cambiar el índice de una pregunta de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID de la pregunta de video cuestionario cuyo índice se cambiará."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Índices actualizados correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pregunta de video cuestionario o pregunta de intercambio no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al cambiar el índice de la pregunta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "direccion": {
+                    "type": "string"
+                  },
+                  "id_parte_video_cuestionario": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "direccion",
+                  "id_nivel"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/preguntaVideo/{id_parte}/{id_pregunta}": {
+      "delete": {
+        "tags": [
+          "Pregunta Video"
+        ],
+        "description": "Endpoint para eliminar una pregunta de video cuestionario.",
+        "parameters": [
+          {
+            "name": "id_parte",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la parte de video cuestionario."
+          },
+          {
+            "name": "id_pregunta",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id de la pregunta de video cuestionario."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pregunta de video cuestionario eliminada correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id_preguntas_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "id_parte_video_cuestionario": {
+                      "type": "integer"
+                    },
+                    "pregunta": {
+                      "type": "string"
+                    },
+                    "indice": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Pregunta de video cuestionario no encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error al eliminar la pregunta de video cuestionario.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -66,8 +66,8 @@ struct Login: View {
                     TextField("Usuario", text: $AccesoVM.user)
                         .padding()
                         .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
                         .foregroundColor(colorScheme == .dark ? Color("Background") : Color.black)
+                        .background(Color.purple.opacity(0.8))
                         .cornerRadius(10)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
@@ -84,7 +84,7 @@ struct Login: View {
                     .padding()
                     .frame(width: 300, height: 50)
                     .foregroundColor(colorScheme == .dark ? Color("Background") : Color.black)
-                    .background(Color.black.opacity(0.05))
+                    .background(Color.purple.opacity(0.8))
                     .cornerRadius(10)
                     .focused($focus, equals: .password)
                     .submitLabel(.go)
@@ -99,11 +99,17 @@ struct Login: View {
                         }
                     }, backgroundColor: .blue)
                     .frame(width: 300, height: 50)
+                    
+                    // Mensaje para deslizar hacia la derecha
+                    Text("Para registro, desliza a la derecha")
+                        .font(.footnote)
+                        .bold()
+                        .foregroundColor(.gray)
                 }
             }
         }
     }
-    
+
     func autenticarUsuario() async {
         do {
             try await AccesoVM.validarAcceso()
@@ -143,7 +149,7 @@ struct Register: View {
                     TextField("Usuario", text: $AccesoVM.user)
                         .padding()
                         .frame(width: 300, height: 50)
-                        .background(Color.black.opacity(0.05))
+                        .background(Color.purple.opacity(0.8))
                         .foregroundColor(colorScheme == .dark ? Color("Background") : Color.black)
                         .cornerRadius(10)
                         .autocorrectionDisabled()
@@ -160,7 +166,7 @@ struct Register: View {
                     })
                     .padding()
                     .frame(width: 300, height: 50)
-                    .background(Color.black.opacity(0.05))
+                    .background(Color.purple.opacity(0.8))
                     .foregroundColor(colorScheme == .dark ? Color("Background") : Color.black)
                     .cornerRadius(10)
                     .focused($focus, equals: .password)

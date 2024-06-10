@@ -1,3 +1,6 @@
+// ESTE ARCHIVO TIENE EL CÓDIGO DE LA ACTIVIDAD DONDE SE MUESTRA LA SEÑA DE LA PREGUNTA Y OPCIONES A ELEGIR
+
+
 import SwiftUI
 
 struct IndividualQuizActivity: View {
@@ -10,11 +13,6 @@ struct IndividualQuizActivity: View {
     @State var bindingTapped: Bool = false
     
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-
-    
-    
-    
-    
 
     var body: some View {
         
@@ -43,20 +41,16 @@ struct IndividualQuizActivity: View {
         }
         
         NavigationStack(){
-            
             VStack (alignment: .center, spacing: objectSeparation) {
-                
-                
                 Spacer(minLength: 15)
-                
-                
                 
                 let randomNumber = Int.random(in: 0...1)
                 
                 if (currentQuestionIndex < preguntasArr.preguntas.count) {
                     if randomNumber == 0 {
                         VideoView(videoID: preguntasArr.preguntas[currentQuestionIndex].id_video)
-                            .frame(minHeight: 0, maxHeight: UIScreen.main.bounds.height * 0.3)
+                            .aspectRatio(4/5, contentMode: .fit) // Adjust contentMode to .fit or .fill depending on your need
+                            .frame(width: UIScreen.main.bounds.width - 48) // Adjusting for padding
                             .cornerRadius(12)
                             .padding(.horizontal, 24)
                     }
@@ -74,7 +68,6 @@ struct IndividualQuizActivity: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: imageWidth, height: imageHeight)
-                                
                                 
                             }
                         }
@@ -274,7 +267,6 @@ struct QuizButton: View {
                             GeometryReader { geometry in
                                 VideoView(videoID: video_id)
                                     .frame(maxWidth: geometry.size.width * videoWidth) // Adjust the width as needed
-                                    
                                     .cornerRadius(12)
                                     .padding(.vertical, 10)
                             }
@@ -285,8 +277,6 @@ struct QuizButton: View {
                         }else{
                             VideoView(videoID: video_id)
                                 .frame(minHeight: 0, maxHeight: UIScreen.main.bounds.height * 0.7)
-                            
-                                
                                 .cornerRadius(12)
                                 .padding(.vertical, 10)
                         }
@@ -313,11 +303,11 @@ struct QuizButton: View {
 func getBackgroundColor(for answerIndex: Int) -> Color {
     switch answerIndex {
     case 0:
-        return Color.orange
+        return Color.blue
     case 1:
-        return Color.yellow
+        return Color.blue
     case 2:
-        return Color.mint
+        return Color.blue
     case 3:
         return Color.blue
     default:
